@@ -17,6 +17,7 @@
 		1A3348661FD644AF000CC3A6 /* GiftProgressViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3348651FD644AF000CC3A6 /* GiftProgressViewDemoUITests.m */; };
 		1A3348791FD6458A000CC3A6 /* GiftProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3348781FD6458A000CC3A6 /* GiftProgressView.m */; };
 		1A33487C1FD64894000CC3A6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A33487B1FD64894000CC3A6 /* UIColor+Hex.m */; };
+		1A91E8551FD68B5C00ACD684 /* Example.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1A91E8541FD68B5C00ACD684 /* Example.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		1A3348781FD6458A000CC3A6 /* GiftProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftProgressView.m; sourceTree = "<group>"; };
 		1A33487A1FD64894000CC3A6 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		1A33487B1FD64894000CC3A6 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		1A91E8541FD68B5C00ACD684 /* Example.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Example.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		1A3348401FD644AE000CC3A6 /* GiftProgressViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1A91E8511FD68A4E00ACD684 /* Source */,
 				1A3348731FD644D9000CC3A6 /* GiftProgressView */,
 				1A3348411FD644AE000CC3A6 /* AppDelegate.h */,
 				1A3348421FD644AE000CC3A6 /* AppDelegate.m */,
@@ -148,6 +151,14 @@
 				1A3348781FD6458A000CC3A6 /* GiftProgressView.m */,
 			);
 			path = GiftProgressView;
+			sourceTree = "<group>";
+		};
+		1A91E8511FD68A4E00ACD684 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1A91E8541FD68B5C00ACD684 /* Example.gif */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				1A33484E1FD644AF000CC3A6 /* LaunchScreen.storyboard in Resources */,
 				1A33484B1FD644AF000CC3A6 /* Assets.xcassets in Resources */,
 				1A3348491FD644AF000CC3A6 /* Main.storyboard in Resources */,
+				1A91E8551FD68B5C00ACD684 /* Example.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

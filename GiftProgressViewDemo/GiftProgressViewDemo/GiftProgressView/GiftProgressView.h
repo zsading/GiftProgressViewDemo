@@ -9,11 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+Hex.h"
 
-typedef NS_ENUM(NSInteger,GiftProgressViewType){
-    GiftProgressViewTypeOfUnFinished,
-    GiftProgressViewTypeOfFinished,
-    GiftProgressViewTypeOfOpen,
-};
 
 @protocol GiftProgressViewDelegate <NSObject>
 //点击了礼物

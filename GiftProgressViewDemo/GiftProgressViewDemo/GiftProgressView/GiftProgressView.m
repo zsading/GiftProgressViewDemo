@@ -10,8 +10,8 @@
 
 @implementation GiftProgressView
 {
-    CAShapeLayer *maskLayer;
-    CAShapeLayer *moveLayer;
+    
+    CAShapeLayer *maskLayer;//蒙版层
     UIView *aboveView;
 }
 
@@ -70,9 +70,9 @@
     CGFloat lineY = self.frame.size.height/2 - lineHeight/2;
     
     
-    [self generatePointWithFrame:CGRectMake(0, smallCircleY, smallCircleRadius*2, smallCircleRadius*2) type:0 above:flag];
-    [self generatePointWithFrame:CGRectMake(self.frame.size.width/2-smallCircleRadius, smallCircleY, smallCircleRadius*2, smallCircleRadius*2) type:0 above:flag];
-    [self generatePointWithFrame:CGRectMake(self.frame.size.width - circleRadius*2,bigCircleY, circleRadius*2, circleRadius*2) type:0 above:flag];
+    [self generatePointWithFrame:CGRectMake(0, smallCircleY, smallCircleRadius*2, smallCircleRadius*2) above:flag];
+    [self generatePointWithFrame:CGRectMake(self.frame.size.width/2-smallCircleRadius, smallCircleY, smallCircleRadius*2, smallCircleRadius*2) above:flag];
+    [self generatePointWithFrame:CGRectMake(self.frame.size.width - circleRadius*2,bigCircleY, circleRadius*2, circleRadius*2) above:flag];
     
     [self generateLineWithFrame:CGRectMake(5, lineY, self.frame.size.width - 10, lineHeight) above:flag];
     
@@ -131,19 +131,11 @@
     }
 }
 
-- (void)generatePointWithFrame:(CGRect)frame
-                          type:(GiftProgressViewType)type
-                         above:(BOOL)isAbove {
+- (void)generatePointWithFrame:(CGRect)frame above:(BOOL)isAbove {
     UIView *pointView = [[UIView alloc] initWithFrame:frame];
     
     pointView.layer.cornerRadius = frame.size.width/2;
-    if (type == GiftProgressViewTypeOfUnFinished) {
-        
-    }else if (type == GiftProgressViewTypeOfFinished){
-        
-    }else if (type == GiftProgressViewTypeOfOpen){
-        
-    }
+  
     
     if (isAbove) {
         pointView.backgroundColor = [UIColor colorFromHexCode:@"c2e9ee"];
@@ -159,13 +151,12 @@
 - (void)configMask{
     
     
-    moveLayer = [CAShapeLayer layer];
-    moveLayer.bounds = aboveView.bounds;
-    moveLayer.fillColor = [[UIColor blackColor] CGColor];
-    moveLayer.path = [UIBezierPath bezierPathWithRect:aboveView.bounds].CGPath;
-    moveLayer.opacity = 0.8;
-    moveLayer.position = CGPointMake(-aboveView.bounds.size.width / 2.0, aboveView.bounds.size.height / 2.0);
-    [maskLayer addSublayer:moveLayer];
+    maskLayer = [CAShapeLayer layer];
+    maskLayer.bounds = aboveView.bounds;
+    maskLayer.fillColor = [[UIColor blackColor] CGColor];
+    maskLayer.path = [UIBezierPath bezierPathWithRect:aboveView.bounds].CGPath;
+    maskLayer.opacity = 0.8;
+    maskLayer.position = CGPointMake(-aboveView.bounds.size.width / 2.0, aboveView.bounds.size.height / 2.0);
     
     aboveView.layer.mask = maskLayer;
     
@@ -183,14 +174,14 @@
 - (void)startAnimation {
     //    _percentValue*self.width
     //    [moveLayer removeAllAnimations];
-    moveLayer.position = CGPointMake(-aboveView.bounds.size.width / 2.0 + _currentPercent * CGRectGetWidth(aboveView.bounds), aboveView.bounds.size.height / 2.0);
+    maskLayer.position = CGPointMake(-aboveView.bounds.size.width / 2.0 + _currentPercent * CGRectGetWidth(aboveView.bounds), aboveView.bounds.size.height / 2.0);
     CABasicAnimation *rightAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     rightAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(-aboveView.bounds.size.width / 2.0, aboveView.bounds.size.height / 2.0)];
     rightAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(-aboveView.bounds.size.width / 2.0 + _currentPercent * CGRectGetWidth(aboveView.bounds), aboveView.bounds.size.height / 2.0)];
     rightAnimation.duration = 1;
     rightAnimation.repeatCount = 0;
     rightAnimation.removedOnCompletion = YES;
-    [moveLayer addAnimation:rightAnimation forKey:@"rightAnimation"];
+    [maskLayer addAnimation:rightAnimation forKey:@"rightAnimation"];
 }
 
 
